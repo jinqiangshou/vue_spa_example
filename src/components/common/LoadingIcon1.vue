@@ -47,10 +47,10 @@
     }
     .loading > div {
         background-color: #999;
-        width: 4px;
-        height: 35px;
-        border-radius: 2px;
-        margin: 2px;
+        width: .3rem;
+        height: 3rem;
+        border-radius: .15rem;
+        margin: .1rem;
         animation-fill-mode: both;
         display: inline-block;
     }

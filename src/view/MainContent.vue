@@ -6,10 +6,16 @@
             infinite-scroll-disabled="disableScroll"
             infinite-scroll-distance="1"
         >
-            <div class="news-item" v-for="item in itemList">
-                <p class="item-title">{{item.title}}</p>
-                <p class="item-author">by {{item.author}}</p>
-            </div>
+            <transition-group name="newsitem" tag="div">
+                <div
+                    v-for="(item, index) in itemList"
+                    v-bind:key="index"
+                    class="news-item"
+                >
+                    <p class="item-title">{{item.title}}</p>
+                    <p class="item-author">by {{item.author}}</p>
+                </div>
+            </transition-group>
         </div>
         <loading-icon v-show="loadingCount>0 || idList.length===0"></loading-icon>
     </div>
@@ -123,5 +129,13 @@
         font-style: italic;
         text-align: right;
         margin-top: .3rem;
+    }
+
+    .newsitem-enter-active {
+        transition: all 1.5s;
+    }
+
+    .newsitem-enter {
+        opacity: 0.1;
     }
 </style>

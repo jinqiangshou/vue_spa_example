@@ -20,5 +20,6 @@
         color: #FFF;
         background-color: #666;
         text-align: center;
+        z-index: 1;
     }
 </style>
