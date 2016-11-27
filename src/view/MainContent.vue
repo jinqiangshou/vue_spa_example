@@ -4,18 +4,21 @@
             class="news-list"
             v-infinite-scroll="loadMore"
             infinite-scroll-disabled="disableScroll"
-            infinite-scroll-distance="10"
+            infinite-scroll-distance="1"
         >
             <div class="news-item" v-for="item in itemList">
                 <p class="item-title">{{item.title}}</p>
-                <p class="item-author">{{item.author}}</p>
+                <p class="item-author">by {{item.author}}</p>
             </div>
         </div>
+        <loading-icon v-show="loadingCount>0 || idList.length===0"></loading-icon>
     </div>
 </template>
 
 <script>
     import Firebase from 'firebase'
+    import LoadingIcon from 'components/common/LoadingIcon1'
+
     let infiniteScroll = require('vue-infinite-scroll')
 
     const fb = Firebase.initializeApp({
@@ -41,6 +44,9 @@
         },
         directives: {
             infiniteScroll
+        },
+        components: {
+            LoadingIcon
         },
         created () {
             let self = this
@@ -93,14 +99,29 @@
 </script>
 
 <style scoped>
+    .main {
+        margin-top: 2.3rem;
+    }
     .news-item {
-        height: 4rem;
-        background-color: blue;
+        height: auto;
+        background-color: #1ABC9C;
         padding: .5rem .2rem;
-        border: .1rem solid red;
+        border-radius: .2rem;
+        margin: .2rem;
     }
 
     .news-item p {
         margin: 0;
+        color: #FFF;
+    }
+
+    .news-item p.item-title {
+        font-size: .65rem;
+    }
+    .news-item p.item-author {
+        font-size: .5rem;
+        font-style: italic;
+        text-align: right;
+        margin-top: .3rem;
     }
 </style>

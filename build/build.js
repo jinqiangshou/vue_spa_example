@@ -33,4 +33,6 @@ webpack(webpackConfig, function (err, stats) {
     chunks: false,
     chunkModules: false
   }) + '\n')
+
+  cp('-R', 'dist/*', 'docs/')
 })

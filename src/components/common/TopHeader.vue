@@ -10,6 +10,10 @@
 
 <style scoped>
     header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
         display: block;
         height: 2rem;
         line-height: 2rem;
