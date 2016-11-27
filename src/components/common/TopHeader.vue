@@ -1,5 +1,5 @@
 <template>
-    <header>Vue SPA Example</header>
+    <header>Hacker News</header>
 </template>
 
 <script>
