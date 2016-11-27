@@ -145,7 +145,7 @@
         font-size: .65rem;
     }
     .news-item p.item-bottomline {
-        font-size: 12px;
+        font-size: .41rem;
         margin-top: .3rem;
         text-align: right;
     }
