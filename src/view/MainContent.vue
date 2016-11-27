@@ -12,8 +12,20 @@
                     v-bind:key="index"
                     class="news-item"
                 >
-                    <p class="item-title">{{item.title}}</p>
-                    <p class="item-author">by {{item.author}}</p>
+                    <p class="item-title">
+                        <template v-if="item.url.length > 0">
+                            <a :href="item.url" target="_blank">{{item.title}}</a>
+                        </template>
+                        <template v-else>
+                            {{item.title}}
+                        </template>
+                    </p>
+                    <p class="item-bottomline">
+                        by
+                        <span class="item-author">{{item.author}}</span>
+                        with score:
+                        <span class="item-score">{{item.score}}</span>
+                    </p>
                 </div>
             </transition-group>
         </div>
@@ -95,7 +107,9 @@
                     if (content.type && content.type === 'story') {
                         self.itemList.push({
                             title: content.title || 'Title Unknown',
-                            author: content.by || 'Author Unknown'
+                            author: content.by || 'Author Unknown',
+                            score: content.score || 'Score Unknown',
+                            url: content.url || ''
                         })
                     }
                 })
@@ -105,6 +119,12 @@
 </script>
 
 <style scoped>
+    a {
+        color: #FFF;
+    }
+    a:hover {
+        color: #DDD;
+    }
     .main {
         margin-top: 2.3rem;
     }
@@ -124,11 +144,13 @@
     .news-item p.item-title {
         font-size: .65rem;
     }
-    .news-item p.item-author {
-        font-size: .5rem;
-        font-style: italic;
-        text-align: right;
+    .news-item p.item-bottomline {
+        font-size: 12px;
         margin-top: .3rem;
+        text-align: right;
+    }
+    .item-author {
+        font-style: italic;
     }
 
     .newsitem-enter-active {
