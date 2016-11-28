@@ -129,11 +129,13 @@
         margin-top: 2.3rem;
     }
     .news-item {
+        display: block;
         height: auto;
         background-color: #1ABC9C;
         padding: .5rem .2rem;
         border-radius: .2rem;
         margin: .2rem;
+        transition: all 1s;
     }
 
     .news-item p {
@@ -153,11 +155,8 @@
         font-style: italic;
     }
 
-    .newsitem-enter-active {
-        transition: all 1.5s;
-    }
-
     .newsitem-enter {
-        opacity: 0.1;
+        opacity: 0;
+        transform: translateY(30px);
     }
 </style>
